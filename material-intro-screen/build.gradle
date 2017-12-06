@@ -1,14 +1,16 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.novoda.bintray-release'
+//apply plugin: 'com.novoda.bintray-release'
+//apply from: '../jacoco-android.gradle'
 
 apply from: "$rootDir/versions.gradle"
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.0"
+    compileSdkVersion project.compileSdkVersion
+    buildToolsVersion project.buildToolsVersion
+        resourcePrefix 'mis_'
 
     defaultConfig {
-        minSdkVersion 15
-        targetSdkVersion 25
+        minSdkVersion project.minSdkVersion
+        targetSdkVersion project.targetSdkVersion
         versionCode 1
         versionName "1.0"
 
@@ -53,14 +55,15 @@ android {
         })
         compile "com.android.support:appcompat-v7:${project.androidSupport}"
         compile "com.android.support:design:${project.androidSupport}"
+        compile "com.android.support:percent:${project.androidSupport}"
     }
 
-    publish {
-        userOrg = 'tangoagency'
-        groupId = 'agency.tango.android'
-        artifactId = 'material-intro-screen'
-        publishVersion = '0.0.5'
-        desc = ''
-        website = 'https://github.com/TangoAgency/material-intro-screen'
-    }
+//    publish {
+//        userOrg = 'tangoagency'
+//        groupId = 'agency.tango.android'
+//        artifactId = 'material-intro-screen'
+//        publishVersion = '0.0.5'
+//        desc = ''
+//        website = 'https://github.com/TangoAgency/material-intro-screen'
+//    }
 }
