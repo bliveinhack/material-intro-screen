@@ -2,6 +2,7 @@ package agency.tango.materialintroscreen;
 
 import android.animation.ArgbEvaluator;
 import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.CallSuper;
@@ -57,6 +58,8 @@ public abstract class MaterialIntroActivity extends AppCompatActivity {
     public Button getMessageButton() {
         return messageButton;
     }
+
+    private int permissionButtonColor=Color.BLACK;
 
     private Button messageButton;
     private LinearLayout navigationView;
@@ -464,7 +467,7 @@ public abstract class MaterialIntroActivity extends AppCompatActivity {
                 setViewsColor(position, offset);
             } else if (adapter.getCount() == 1 || isOnLastSlide(position, offset)) {
                 viewPager.setBackgroundColor(getBackgroundColor(position));
-                messageButton.setTextColor(getBackgroundColor(position));
+                messageButton.setTextColor(permissionButtonColor);
                 pageIndicator.setPageIndicatorColor(getButtonsColor(position));
 
                 tintButtons(ColorStateList.valueOf(getButtonsColor(position)));
@@ -472,13 +475,13 @@ public abstract class MaterialIntroActivity extends AppCompatActivity {
         }
 
         public void setMessageButtonColor(int backgroundColor){
-            messageButton.setTextColor(backgroundColor);
+            messageButton.setTextColor(permissionButtonColor);
         }
 
         private void setViewsColor(int position, float offset) {
             int backgroundColor = getBackgroundEvaluatedColor(position, offset);
             viewPager.setBackgroundColor(backgroundColor);
-            messageButton.setTextColor(backgroundColor);
+            messageButton.setTextColor(permissionButtonColor);
 
 
             int buttonsColor = getButtonsEvaluatedColor(position, offset);
