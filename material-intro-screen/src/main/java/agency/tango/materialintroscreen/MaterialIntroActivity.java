@@ -53,6 +53,11 @@ public abstract class MaterialIntroActivity extends AppCompatActivity {
     private ImageButton skipButton;
     private ImageButton nextButton;
     private CoordinatorLayout coordinatorLayout;
+
+    public Button getMessageButton() {
+        return messageButton;
+    }
+
     private Button messageButton;
     private LinearLayout navigationView;
     private OverScrollViewPager overScrollLayout;
@@ -466,10 +471,15 @@ public abstract class MaterialIntroActivity extends AppCompatActivity {
             }
         }
 
+        public void setMessageButtonColor(int backgroundColor){
+            messageButton.setTextColor(backgroundColor);
+        }
+
         private void setViewsColor(int position, float offset) {
             int backgroundColor = getBackgroundEvaluatedColor(position, offset);
             viewPager.setBackgroundColor(backgroundColor);
             messageButton.setTextColor(backgroundColor);
+
 
             int buttonsColor = getButtonsEvaluatedColor(position, offset);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
